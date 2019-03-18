@@ -1,0 +1,17 @@
+#!/bin/bash
+# Copyright (C) CNES - All Rights Reserved
+# This file is subject to the terms and conditions defined in
+# file 'LICENSE.md', which is part of this source code package.
+#
+# Author:      Peter KETTIG <peter.kettig@cnes.fr>
+# Project:     Weighted Average Synthesis Processor (WASP)
+# Filename:    WASP
+# Created on:  4 Sep 2018
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+
+if [ ! -f $DIR/python3 ] || [ ! -f $DIR/WASP.py ]; then
+	echo "Cannot find WASP executable."; return 1
+fi
+
+$DIR/python3 $DIR/WASP.py $@

@@ -22,13 +22,7 @@ Theia also produces [**Level 3A products with WASP over France**](https://theia.
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-### Prerequisites
 
-The program has the following dependencies:
-* OTB 6.2 (https://orfeo-toolbox.org)
-* Python 2.7 or >3.5 (https://www.python.org/downloads/)
-* CMake >3.7.2 (https://cmake.org)
-* GCC >6.3.0 (https://gcc.gnu.org) or any other C/C++ compiler for your system
 
 ### Pre-compiled binaries
 
@@ -43,12 +37,21 @@ To install it, execute:
 
 ### Compiling from source
 
+#### Prerequisites
+
+The program has the following dependencies:
+* OTB 6.2 (https://orfeo-toolbox.org)
+* Python 2.7 or >3.5 (https://www.python.org/downloads/)
+* CMake >3.7.2 (https://cmake.org)
+* GCC >6.3.0 (https://gcc.gnu.org) or any other C/C++ compiler for your system
+
 In order to install the software, first install CMake, the c/c++ compiler and the python interpreter (optional). Then follow the tutorial on how to install OTB via the Superbuild to the desired location:
 
 *https://www.orfeo-toolbox.org/SoftwareGuide/SoftwareGuidech2.html#x16-220002.1.2*
 
-Note: You do not need to activate/deactivate any modules. The default configuration works out of the box.
-Then proceed and install WASP:
+Note: You do not need to activate/deactivate any modules. The default configuration works out of the box.*
+
+#### compile and install WASP:
 ```
 cd $WASP_DIR
 mkdir build && install

@@ -20,7 +20,7 @@ Theia also produces [**Level 3A products with WASP over France**](https://theia.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. MAJA is available as pre-compiled binary, or as a source code that you will have to compile.
 
 
 

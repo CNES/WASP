@@ -5,13 +5,18 @@ Image processing chain based on OTB to create monthly syntheses of cloud-free re
 <a href="http://cesbio.cnrs.fr/images/France_4mois.jpg"><img  title="Ambaro Bay, Madagascar" src="http://cesbio.cnrs.fr/images/France_4mois.jpg" alt="" width="400" height="400" align="middle"  /></a>
 
 ## Inputs, algorithm and outputs
-The processing chain creates a synthesis image of multiple Level-2A tiles produced with [MAJA](http://www.cesbio.ups-tlse.fr/multitemp/?p=6203). A database of over 150.000 freely distributed products is available under:
-* [Level-2A products](https://theia.cnes.fr/atdistrib/rocket/#/search?page=1&collection=SENTINEL2&processingLevel=LEVEL2A)
+The processing chain creates a synthesis image from multiple Level-2A tiles produced with [MAJA](http://www.cesbio.ups-tlse.fr/multitemp/?p=6203). MAJA Level 2A products can be obtained:
 
-The algorithm to combine the inputs into one single synthesis is described [here](http://www.cesbio.ups-tlse.fr/multitemp/?p=13976).
+* [From Theia, the French Land data centre, for several countries or regions](https://theia.cnes.fr/atdistrib/rocket/#/search?page=1&collection=SENTINEL2&processingLevel=LEVEL2A)
+* [From PEPS, as an on-demand processing, anywhere on the world](https://github.com/olivierhagolle/maja_peps)
+* [Using MAJA on user side](https://github.com/olivierhagolle/Start_maja)
+* [within the Sen2Agri project](http://www.esa-sen2agri.org/)
+
+The weigted average synthesis method to combine the inputs into one single synthesis is described [here](http://www.cesbio.ups-tlse.fr/multitemp/?p=13976).
 Once synthesized, a Level-3 product is generated further described in the [format description](http://www.cesbio.ups-tlse.fr/multitemp/?page_id=14019).
-A collection of Level-3 products can be found under:
-* [Level-3A products](https://theia.cnes.fr/atdistrib/rocket/#/search?page=1&collection=SENTINEL2&processingLevel=LEVEL3A)
+
+Theia also produces [**Level 3A products with WASP over France**](https://theia.cnes.fr/atdistrib/rocket/#/search?page=1&collection=SENTINEL2&processingLevel=LEVEL3A), and soon over all the zones already processed by Theia.
+
 
 ## Getting Started
 

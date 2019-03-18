@@ -2,8 +2,10 @@
 
 Image processing chain based on OTB to create monthly syntheses of cloud-free reflectances for Sentinel-2 or Venus Level-2A products distributed by the [Theia Land data centre](https://theia.cnes.fr/atdistrib/rocket/#/home).
 
+<a href="http://cesbio.cnrs.fr/images/France_4mois.jpg"><img  title="Ambaro Bay, Madagascar" src="http://cesbio.cnrs.fr/images/France_4mois.jpg" alt="" width="400" height="400" align="middle"  /></a>
+
 ## Inputs, algorithm and outputs
-The processing chain creates a composite image of multiple Level-2A tiles produced with [MAJA](http://www.cesbio.ups-tlse.fr/multitemp/?p=6203). A database of over 150.000 freely distributed products is available under:
+The processing chain creates a synthesis image of multiple Level-2A tiles produced with [MAJA](http://www.cesbio.ups-tlse.fr/multitemp/?p=6203). A database of over 150.000 freely distributed products is available under:
 * [Level-2A products](https://theia.cnes.fr/atdistrib/rocket/#/search?page=1&collection=SENTINEL2&processingLevel=LEVEL2A)
 
 The algorithm to combine the inputs into one single synthesis is described [here](http://www.cesbio.ups-tlse.fr/multitemp/?p=13976).

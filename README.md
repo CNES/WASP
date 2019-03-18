@@ -1,9 +1,9 @@
 # WASP - Weighted Average Synthesis Processor
 
-Image processing chain based on OTB to create composite cloud-free images of Sentinel-2 or Venus Level-2A products distributed by the [Theia Land data centre](https://theia.cnes.fr/atdistrib/rocket/#/home).
+Image processing chain based on OTB to create monthly syntheses of cloud-free reflectances for Sentinel-2 or Venus Level-2A products distributed by the [Theia Land data centre](https://theia.cnes.fr/atdistrib/rocket/#/home).
 
 ## Inputs, algorithm and outputs
-The processing chain creates a composite image of multiple Level-2A products produced with MAJA(LINK). A database of over 150.000 freely distributed products is available under:
+The processing chain creates a composite image of multiple Level-2A tiles produced with [MAJA](http://www.cesbio.ups-tlse.fr/multitemp/?p=6203). A database of over 150.000 freely distributed products is available under:
 * [Level-2A products](https://theia.cnes.fr/atdistrib/rocket/#/search?page=1&collection=SENTINEL2&processingLevel=LEVEL2A)
 
 The algorithm to combine the inputs into one single synthesis is described [here](http://www.cesbio.ups-tlse.fr/multitemp/?p=13976).
@@ -68,7 +68,7 @@ For an explanation on which inputs the program takes, simply execute
 
 ### Example
 
-First, you need to download and unzip the Level-2 products of your choice. Have a look at [theia_download](https://github.com/olivierhagolle/theia_download) if you don't know how to do this.
+First, you need to download and unzip the Level-2 products of your choice. Have a look at the [theia_download tool](https://github.com/olivierhagolle/theia_download) if you don't know how to do this.
 The following command line creates a composite centered around the 2018/05/02 out of 9 Level-2A products from a 46-day period:
 
 ```
@@ -112,19 +112,23 @@ Click [here](http://www.cesbio.ups-tlse.fr/multitemp/?page_id=14019) for the for
 
 * [OTB](https://orfeo-toolbox.org) - The Orfeo toolbox
 
-## Copyright
+## History/Copyright
 
-For the initial work performed within the [Sen2Agri](http://www.esa-sen2agri.org/) project :
+WASP method was initially developped at CESBIO by O.Hagolle for the VENµS satellite.
+
+WASP processor comes from the initial work performed within the [Sen2Agri](http://www.esa-sen2agri.org/) project, by the following consortium :
+
+* **Université Catholique de Louvain (UCL)**
 * **CS Romania**
-* **Catholic University of Leuven (UCL)**
-* **Centre National d'Etudes Spatiales (CNES)**
+* **CS France**
+* **Centre d'Etudes Spatiales de la Biosphère (CESBIO)**
 
-Special thanks to the developers of Sen2Agri:
-Cosmin Udroiu, Laurentiu Nicola, Alex Grosu, Lucian Barbulescu and Anca Trasca
+Within Sen2Agri, WASP processor was mainly developped at CS-Romania by :
+Cosmin Udroiu, Alex Grosu, Laurentiu Nicola, Lucian Barbulescu and Anca Trasca
 
-For the development of WASP :
+WASP was then adapted to CNES context by Peter Kettig from
 * **Centre National d'Etudes Spatiales (CNES)** 
 
 ## License
 
-This project is licensed under the GPLv3 License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the GPLv3+ License - see the [LICENSE.md](LICENSE.md) file for details

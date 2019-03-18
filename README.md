@@ -32,9 +32,7 @@ The program has the following dependencies:
 
 ### Pre-compiled binaries
 
-WASP binaries are available for Linux distributions under the following link:
-
-#### [**Download**](https://logiciels.cnes.fr/en/content/wasp)
+WASP binaries are available for Linux distributions [**under the following link**](https://logiciels.cnes.fr/en/content/wasp)
 
 
 To install it, execute:

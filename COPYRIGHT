@@ -1,0 +1,76 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: Weighted Average Synthesis Processor (WASP)
+Upstream-Contact: CNES <peter.kettig@cnes.fr>, CESBIO <olivier.hagolle@cnes.fr>
+
+Files: *
+Copyright: <2018-2019> Centre national d'études spatiales (CNES), France
+Comment: WASP project, initialy named TemporalSynthesis, for MUSCATE/THEIA 
+License: GPL-3+
+
+Files: Common/include/GlobalDefs.h
+  Common/include/ImageResampler.h
+  Common/include/MetadataAngles.h
+  Common/include/MetadataHelperFactory.h
+  Common/include/MetadataHelper.h
+  Common/include/ResamplingBandExtractor.h
+  Common/src/MetadataHelper.cpp
+  Common/src/MetadataHelperFactory.cpp
+  CompositePreprocessing/include/ComputeNDVI.h
+  CompositePreprocessing/include/CreateS2AnglesRaster.h
+  CompositePreprocessing/include/DirectionalCorrectionFilter.h
+  CompositePreprocessing/include/DirectionalCorrectionFunctor.h
+  CompositePreprocessing/include/DirectionalCorrection.h
+  CompositePreprocessing/include/DirectionalModel.h
+  CompositePreprocessing/include/MaskExtractorFilter.h
+  CompositePreprocessing/src/ComputeNDVI.cpp
+  CompositePreprocessing/src/CreateS2AnglesRaster.cpp
+  CompositePreprocessing/src/DirectionalCorrection.cpp
+  CompositePreprocessing/src/DirectionalCorrectionFunctor.txx
+  CompositePreprocessing/src/DirectionalModel.cpp
+  CompositePreprocessing/src/MaskExtractorFilter.txx
+  MuscateMetadata/include/FluentXML.hpp
+  MuscateMetadata/include/MetadataUtil.hpp
+  MuscateMetadata/include/string_utils.hpp
+  MuscateMetadata/include/tinyxml_utils.hpp
+  MuscateMetadata/include/ViewingAngles.hpp
+  MuscateMetadata/src/FluentXML.cpp
+  MuscateMetadata/src/MetadataUtil.cpp
+  MuscateMetadata/src/string_utils.cpp
+  MuscateMetadata/src/tinyxml_utils.cpp
+  MuscateMetadata/src/ViewingAngles.cpp
+  ProductFormatter/src/ProductFormatter.cpp
+  UpdateSynthesis/include/BandsDefs.h
+  UpdateSynthesis/include/UpdateSynthesisFunctor.h
+  UpdateSynthesis/src/UpdateSynthesis.cpp
+  UpdateSynthesis/src/UpdateSynthesisFunctor.txx
+  WeightCalculation/TotalWeight/include/TotalWeightComputation.h
+  WeightCalculation/TotalWeight/src/TotalWeightComputation.cpp
+  WeightCalculation/TotalWeight/src/TotalWeight.cpp
+  WeightCalculation/WeightAOT/include/WeightAOTComputation.h
+  WeightCalculation/WeightAOT/src/WeightAOTComputation.cpp
+  WeightCalculation/WeightAOT/src/WeightAOT.cpp
+  WeightCalculation/WeightOnClouds/include/CloudMaskBinarization.h
+  WeightCalculation/WeightOnClouds/include/CloudsInterpolation.h
+  WeightCalculation/WeightOnClouds/include/CloudWeightComputation.h
+  WeightCalculation/WeightOnClouds/include/CuttingImageFilter.h
+  WeightCalculation/WeightOnClouds/include/GaussianFilter.h
+  WeightCalculation/WeightOnClouds/include/PaddingImageHandler.h
+  WeightCalculation/WeightOnClouds/src/WeightOnClouds.cpp
+Copyright: <2014-2018> CS-Romania SA, Romania
+           <2018-2019> Centre national d'études spatiales (CNES), France
+Comment: Initial work funded by ESA during the ESA DUE Sentinel-2 For
+         Agriculture Project. Modified for WASP project
+License: GPL-3+
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.

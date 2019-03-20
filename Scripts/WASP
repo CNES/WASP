@@ -10,8 +10,25 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
+# Throw error when sourced (This would delete the PYTHON-variables):
+if [[ ${BASH_SOURCE[0]} != $0 ]]; then
+	printf "ERROR: Script %s must not run sourced\n" "${BASH_SOURCE[0]}"
+	return 1
+fi
+
+# Unset Environment variables if necessary:
+if [[ ! -z "${PYTHONPATH}" ]]; then
+	unset PYTHONPATH
+fi
+
+if [[ ! -z "${PYTHONHOME}" ]]; then
+	unset PYTHONHOME
+fi
+
+# Check availability:
 if [ ! -f $DIR/python3 ] || [ ! -f $DIR/WASP.py ]; then
 	echo "Cannot find WASP executable."; return 1
 fi
 
+# Forward all other arguments:
 $DIR/python3 $DIR/WASP.py $@

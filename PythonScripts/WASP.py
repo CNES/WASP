@@ -49,9 +49,9 @@ class TemporalSynthesis():
            The run() method will run the full-Atillery ;)
     """
 
-# =============================================================================
-#   Program specific parameters:
-# =============================================================================
+    # =========================================================================
+    #   Program specific parameters:
+    # =========================================================================
     ExeVersion = "1.0"
     scatteringCoeffBasePath = "scattering_coeffs_"
     scatteringCoeffsVersion = "1.0"
@@ -74,13 +74,13 @@ class TemporalSynthesis():
 
     venusPlatform = "VENUS"
     s2Platform = "SENTINEL2"
-    # =============================================================================
+    # =========================================================================
     # Environment Variables
-    # =============================================================================
+    # =========================================================================
     # GDAL RAM usage
     GDAL_CACHEMAX=16384
     # Set the number of available CPUs for each OTB-App
-    ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS = 24
+    ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS = 8
 
     def __init__(self, defArgs):
         self.initLoggers(filepath = defArgs.logging)
@@ -101,7 +101,7 @@ class TemporalSynthesis():
         try:
             self.checkApplicationAvailability()
         except OSError:
-            raise OSError("Cannot find otbcli executable")
+            raise OSError("Cannot find otbApplicationLauncherCommandLine executable")
 
     def initLoggers(self, msgLevel = logging.DEBUG, filepath = ""):
         """
@@ -134,7 +134,7 @@ class TemporalSynthesis():
             logger.addHandler(fileHandler)
         return logger
 
-    def setupEnvironmentVariable(self, variableName, path, reset = False, ignoreWarning = False):
+    def setupEnvironmentVariable(self, variableName, path, reset = True, ignoreWarning = False):
         """
         @brief Export an environment variable
         @variableName The variable to be appended or exportet
@@ -146,7 +146,7 @@ class TemporalSynthesis():
             os.environ[envVar] = path
         else:
             try:
-                os.environ[envVar] += os.pathsep + path
+                os.environ[envVar] = os.environ[envVar] + os.pathsep + path
             except:
                 if(not ignoreWarning): logging.warning("Cannot find existing {0}, setting it anyway".format(envVar))
                 os.environ[envVar] = path
@@ -489,14 +489,14 @@ class TemporalSynthesis():
 
     def runOTBApplication(self, name, args, testRun = False):
         """
-        @brief Run an OTB app using the otbcli
+        @brief Run an OTB app using the otbApplicationLauncherCommandLine
         @param name the Name of the application
         @param args The list of arguments to run the app with
         @param testRun True, if only a list of current apps shall be displayed, False otherwise
         @return The return code of the App, as it is being spawned using subprocess.Popen()
         """
 
-        fullArgs = ["otbcli", name] + args + ["-progress", str(1)]
+        fullArgs = ["otbApplicationLauncherCommandLine", name] + args + ["-progress", str(1)]
         if(not testRun):
             logging.info(" ".join(a for a in fullArgs))
             fullArgs = fullArgs #Prepend other programs here
@@ -784,8 +784,7 @@ if __name__ == "__main__":
     parser.add_argument("-o", "--out", help="Output directory. Required.", required=True, type=str)
     parser.add_argument("-t", "--tempout", help="Temporary output directory. If none is given, it is set to the value of --out", required=False, type=str)
     parser.add_argument("-v", "--version", help="Parameter version. Default is 1.0", required = False, type=str)
-    parser.add_argument("-log", "--logging", help="Logging path, where the log-file is created. Default is in the current directory", required = False, default="", type=str)
-
+    parser.add_argument("-log", "--logging", help="Path to log-file. Default is in the current directory. If none is given, no log-file will be created.", required = False, default="", type=str)
     parser.add_argument("-d" ,"--date", help="L3A synthesis date in the format 'YYYYMMDD'. If none, then the middle date between all products is used", required=False, type=str)
     parser.add_argument("--synthalf", help="Half synthesis period in days. Default for S2 is 23, for Venus is 9", required=False, type=int)
     parser.add_argument("--pathprevL3A", help="Path to the previous L3A product folder. Does not have to be set.", required=False, type=str)
@@ -799,7 +798,7 @@ if __name__ == "__main__":
     parser.add_argument("--sigmasmallcld", help="Sigma for small Clouds. Default is 2", required=False, type=float)
     parser.add_argument("--sigmalargecld",  help="Sigma for large Clouds. Default is 10", required=False, type=float)
     parser.add_argument("--weightdatemin", help="Minimum Weight for Dates. Default is 0.5", required=False, type=float)
-    parser.add_argument("--nthreads", help="Number of threads to be used for running the chain", required=False, type=int)
+    parser.add_argument("--nthreads", help="Number of threads to be used for running the chain. Default is 8.", required=False, type=int)
     parser.add_argument("--scatteringcoeffpath", help="Path to the scattering coefficients files. If none, it will be searched for using the OTB-App path. Only has to be set for testing-purposes", required=False, type=str)
 
     args = parser.parse_args()

@@ -23,16 +23,28 @@ Theia also produces [**Level 3A products with WASP over France**](https://theia.
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. MAJA is available as pre-compiled binary, or as a source code that you will have to compile.
 
 
-
 ### Pre-compiled binaries
 
 WASP binaries are available for Linux distributions [**under the following link**](https://logiciels.cnes.fr/en/content/wasp)
 
 
-To install it, execute:
+To install it, first make sure you have GLU installed:
+
+__For CentOS__
 
 ```
-./WASP-1.0.run --target /path/to/install
+yum install mesa-libGLU-devel
+```
+
+__For Ubuntu__
+```
+apt-get install libglu1-mesa-dev
+```
+
+Then extract and execute the downloaded executable:
+
+```
+./WASP-1.x.run --target /path/to/install
 ```
 
 ### Compiling from source

@@ -29,7 +29,7 @@
 #include "otbWrapperTypes.h"
 #include "otbMultiToMonoChannelExtractROI.h"
 #include "otbImageFileReader.h"
-#include "otbUnaryFunctorImageFilter.h"
+#include "itkUnaryFunctorImageFilter.h"
 #include "MaskExtractorFunctor.h"
 
 #include "itkNumericTraits.h"

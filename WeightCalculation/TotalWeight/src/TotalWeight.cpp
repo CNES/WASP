@@ -65,7 +65,6 @@ private:
     SetName("TotalWeight");
     SetDescription("Calculate the total weight using the AOT- and cloud-images");
 
-    SetDocName("Total Weight Computation");
     SetDocLongDescription("Calculate the total weight using the AOT- and cloud-images");
 
     SetDocLimitations("None");

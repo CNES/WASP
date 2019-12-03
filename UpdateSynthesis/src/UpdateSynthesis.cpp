@@ -88,7 +88,6 @@ private:
 		SetName("UpdateSynthesis");
 		SetDescription("Update synthesis using the recurrent expression of the weighted average.");
 
-		SetDocName("UpdateSynthesis");
 		SetDocLongDescription("Update synthesis using the recurrent expression of the weighted average.");
 		SetDocLimitations("None");
 		SetDocAuthors("Peter KETTIG");
@@ -251,8 +250,8 @@ private:
 				auto spacingPrevL3A = L2AImage->GetSpacing();
 
 				if((nL3AWidth != nL2AWidth) || (nL3AHeight != nL2AHeight)) {
-					otbMsgDevMacro("WARNING: L3A and L2A product sizes differ: " << "L2A: " << nL2AWidth << " " << nL2AHeight << ", "
-							<< "L3A: " << nL3AWidth << " " << nL3AHeight << std::endl;)
+        otbMsgDevMacro(<<"WARNING: L3A and L2A product sizes differ: " << "L2A: " << nL2AWidth << " " << nL2AHeight << ", "
+                       << "L3A: " << nL3AWidth << " " << nL3AHeight);
 				}
 				InternalBandImageType::Pointer weights = ResampledBandsExtractor.ExtractImgResampledBand(prevL3A, 1, Interpolator_Linear, spacingPrevL3A[0], spacingL2A[0], nDesiredWidth, nDesiredHeight);
 				rasterList->PushBack(weights);
@@ -284,8 +283,8 @@ private:
 				auto spacingPrevL3A = L2AImage->GetSpacing();
 
 				if((nL3AWidth != nL2AWidth) || (nL3AHeight != nL2AHeight)) {
-					otbMsgDevMacro("WARNING: L3A and L2A product sizes differ: " << "L2A: " << nL2AWidth << " " << nL2AHeight << ", "
-							<< "L3A: " << nL3AWidth << " " << nL3AHeight << std::endl;)
+        otbMsgDevMacro(<<"WARNING: L3A and L2A product sizes differ: " << "L2A: " << nL2AWidth << " " << nL2AHeight << ", "
+                       << "L3A: " << nL3AWidth << " " << nL3AHeight);
 				}
 				int nL3Weights = ResampledBandsExtractor.ExtractAllResampledBands(prevL3AWeight, rasterList, Interpolator_Linear, spacingPrevL3A[0], spacingL2A[0], nDesiredWidth, nDesiredHeight);
 				int nL3Dates= ResampledBandsExtractor.ExtractAllResampledBands(prevL3AAvgDate, rasterList, Interpolator_Linear, spacingPrevL3A[0], spacingL2A[0], nDesiredWidth, nDesiredHeight);

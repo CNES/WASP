@@ -71,7 +71,6 @@ private:
 		SetName("WeightOnClouds");
 		SetDescription("Computes the cloud weight value for the given mask cloud and parameters");
 
-		SetDocName("Weight on Clouds");
 		SetDocLongDescription("Computes the cloud weight value for the given mask cloud and parameters");
 
 		SetDocLimitations("None");

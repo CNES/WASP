@@ -64,7 +64,6 @@ private:
     SetName("WeightAOT");
     SetDescription("Calculate the AOT-weight from a given AOT-mask");
 
-    SetDocName("WeightAOT");
     SetDocLongDescription("Calculate the AOT-weight from a given AOT-mask");
     SetDocLimitations("None");
     SetDocAuthors("Peter Kettig");

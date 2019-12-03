@@ -64,7 +64,6 @@ private:
 		SetName("ProductFormatter");
 		SetDescription("Creates the final output product using the previously generated files from UpdateSynthesis as well as all Metadata Information");
 
-		SetDocName("ProductFormatter");
 		SetDocLongDescription("Creates the final output product using the previously generated files from UpdateSynthesis as well as all Metadata Information");
 		SetDocLimitations("None");
 		SetDocAuthors("Peter KETTIG, CNES");

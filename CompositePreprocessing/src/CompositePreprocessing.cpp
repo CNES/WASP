@@ -70,7 +70,6 @@ private:
 		SetName("CompositePreprocessing");
 		SetDescription("Perform the directional correction of FRE Images");
 
-		SetDocName("CompositePreprocessing");
 		SetDocLongDescription("Perform the directional correction of FRE Images");
 		SetDocLimitations("None");
 		SetDocAuthors("Peter KETTIG");

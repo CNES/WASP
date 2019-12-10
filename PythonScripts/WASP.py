@@ -196,12 +196,11 @@ class TemporalSynthesis():
             logging.error("Dates list empty. Are all XMLs readable?")
             exit(1)
         dates.sort()
-        
-        print("Nb date before filtering: {}".format(len(dates)))
 
         # Filter date that are not within synthalf range
         if synthalf is not None and date is not None:
             date = self.stringToDatetime(args.date, short = True)
+            logging.info("Filtering dates outside of target date {} +/- {} days".format(date,synthalf))
             synthalf_delta = dt.timedelta(days = synthalf)
             
             filtered_dates = []
@@ -209,11 +208,9 @@ class TemporalSynthesis():
             for d in dates:
                 if abs(d-date) <= synthalf_delta:
                     filtered_dates.append(d)
-                else:
-                    logging.info("Removing {} date because it is outside of target date {} +/- {} days".format(d,date,synthalf))
             dates = filtered_dates
-            
-        print("Nb date after filtering: {}".format(len(dates)))
+            logging.info("{} dates kept for synthesis".format(len(dates)))
+
         minDate = min(dates)
         maxDate = max(dates)
         midDate = minDate + (maxDate - minDate)/2

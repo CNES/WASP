@@ -168,7 +168,7 @@ class TemporalSynthesis():
                 raise NameError("Cannot find {0} in the list of OTB Apps".format(item))
         return
 
-    def getAcquisitionPeriod(self, xmllist):
+    def getAcquisitionPeriod(self, xmllist, synthalf = None, date = None):
         """
         @brief Calculate Min, Max and Middle-datetimes from a Muscate-XML list
         @param xmllist the list of filenames containing an XML
@@ -196,6 +196,24 @@ class TemporalSynthesis():
             logging.error("Dates list empty. Are all XMLs readable?")
             exit(1)
         dates.sort()
+        
+        print("Nb date before filtering: {}".format(len(dates)))
+
+        # Filter date that are not within synthalf range
+        if synthalf is not None and date is not None:
+            date = self.stringToDatetime(args.date, short = True)
+            synthalf_delta = dt.timedelta(days = synthalf)
+            
+            filtered_dates = []
+
+            for d in dates:
+                if abs(d-date) <= synthalf_delta:
+                    filtered_dates.append(d)
+                else:
+                    logging.info("Removing {} date because it is outside of target date {} +/- {} days".format(d,date,synthalf))
+            dates = filtered_dates
+            
+        print("Nb date after filtering: {}".format(len(dates)))
         minDate = min(dates)
         maxDate = max(dates)
         midDate = minDate + (maxDate - minDate)/2
@@ -319,7 +337,7 @@ class TemporalSynthesis():
             self.setParameterVersion(args.version)
 
         #Calculate temporal parameters
-        acqPeriod, synthalf, datesAsDatetime = self.getAcquisitionPeriod(args.input)
+        acqPeriod, synthalf, datesAsDatetime = self.getAcquisitionPeriod(args.input, args.synthalf, args.date)
         #Set temporal parameters to either default values or to user-defined ones
         if(args.date == None):
             args.date = self.datetimeToString(acqPeriod[1])

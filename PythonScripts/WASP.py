@@ -168,7 +168,7 @@ class TemporalSynthesis():
                 raise NameError("Cannot find {0} in the list of OTB Apps".format(item))
         return
 
-    def getAcquisitionPeriod(self, xmllist):
+    def getAcquisitionPeriod(self, xmllist, synthalf = None, date = None):
         """
         @brief Calculate Min, Max and Middle-datetimes from a Muscate-XML list
         @param xmllist the list of filenames containing an XML
@@ -195,7 +195,25 @@ class TemporalSynthesis():
         if(not dates):
             logging.error("Dates list empty. Are all XMLs readable?")
             exit(1)
+
+        # Filter date that are not within synthalf range
+        if synthalf is not None and date is not None:
+            date = self.stringToDatetime(args.date, short = True)
+            logging.info("Filtering dates outside of target date {} +/- {} days".format(date,synthalf))
+            synthalf_delta = dt.timedelta(days = synthalf)
+            
+            filtered_dates = []
+            filtered_xmllist = []
+            for xml,d in zip(xmllist,dates):
+                if abs(d-date) <= synthalf_delta:
+                    filtered_dates.append(d)
+                    filtered_xmllist.append(xml)
+            dates = filtered_dates
+            xmllist = filtered_xmllist
+            logging.info("{} dates kept for synthesis".format(len(dates)))
+
         dates.sort()
+
         minDate = min(dates)
         maxDate = max(dates)
         midDate = minDate + (maxDate - minDate)/2
@@ -205,7 +223,7 @@ class TemporalSynthesis():
         elif(dateIntervals[0] > MAX_DATE_INTERVAL or dateIntervals[1] > MAX_DATE_INTERVAL):
             logging.warning("XML-Input dates interval is bigger than " + str(MAX_DATE_INTERVAL*2 - 1) + " days!")
 
-        return [minDate, midDate, maxDate],  np.mean(dateIntervals), dates
+        return [minDate, midDate, maxDate],  np.mean(dateIntervals), dates, xmllist
 
     def datetimeToString(self, d, short = False):
         """
@@ -319,7 +337,9 @@ class TemporalSynthesis():
             self.setParameterVersion(args.version)
 
         #Calculate temporal parameters
-        acqPeriod, synthalf, datesAsDatetime = self.getAcquisitionPeriod(args.input)
+        acqPeriod, synthalf, datesAsDatetime, xmllist = self.getAcquisitionPeriod(args.input, args.synthalf, args.date)
+        args.input = xmllist
+
         #Set temporal parameters to either default values or to user-defined ones
         if(args.date == None):
             args.date = self.datetimeToString(acqPeriod[1])

@@ -195,7 +195,6 @@ class TemporalSynthesis():
         if(not dates):
             logging.error("Dates list empty. Are all XMLs readable?")
             exit(1)
-        dates.sort()
 
         # Filter date that are not within synthalf range
         if synthalf is not None and date is not None:
@@ -204,12 +203,16 @@ class TemporalSynthesis():
             synthalf_delta = dt.timedelta(days = synthalf)
             
             filtered_dates = []
-
-            for d in dates:
+            filtered_xmllist = []
+            for xml,d in zip(xmllist,dates):
                 if abs(d-date) <= synthalf_delta:
                     filtered_dates.append(d)
+                    filtered_xmllist.append(xml)
             dates = filtered_dates
+            xmllist = filtered_xmllist
             logging.info("{} dates kept for synthesis".format(len(dates)))
+
+        dates.sort()
 
         minDate = min(dates)
         maxDate = max(dates)
@@ -220,7 +223,7 @@ class TemporalSynthesis():
         elif(dateIntervals[0] > MAX_DATE_INTERVAL or dateIntervals[1] > MAX_DATE_INTERVAL):
             logging.warning("XML-Input dates interval is bigger than " + str(MAX_DATE_INTERVAL*2 - 1) + " days!")
 
-        return [minDate, midDate, maxDate],  np.mean(dateIntervals), dates
+        return [minDate, midDate, maxDate],  np.mean(dateIntervals), dates, xmllist
 
     def datetimeToString(self, d, short = False):
         """
@@ -334,7 +337,9 @@ class TemporalSynthesis():
             self.setParameterVersion(args.version)
 
         #Calculate temporal parameters
-        acqPeriod, synthalf, datesAsDatetime = self.getAcquisitionPeriod(args.input, args.synthalf, args.date)
+        acqPeriod, synthalf, datesAsDatetime, xmllist = self.getAcquisitionPeriod(args.input, args.synthalf, args.date)
+        args.input = xmllist
+
         #Set temporal parameters to either default values or to user-defined ones
         if(args.date == None):
             args.date = self.datetimeToString(acqPeriod[1])
